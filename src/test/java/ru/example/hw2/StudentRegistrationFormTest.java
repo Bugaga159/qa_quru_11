@@ -1,4 +1,4 @@
-package ru.example;
+package ru.example.hw2;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
