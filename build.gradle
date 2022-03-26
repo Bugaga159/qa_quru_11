@@ -36,6 +36,8 @@ dependencies {
             'com.codeborne:xls-test:1.4.0',
             'com.opencsv:opencsv:5.6',
             'com.google.code.gson:gson:2.9.0',
+            'com.fasterxml.jackson.core:jackson-core:2.13.2',
+            'com.fasterxml.jackson.core:jackson-databind:2.13.2',
     )
     testRuntimeOnly (
             "org.junit.jupiter:junit-jupiter-engine:5.8.2",
