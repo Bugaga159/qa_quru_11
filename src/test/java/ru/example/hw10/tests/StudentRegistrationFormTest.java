@@ -1,6 +1,7 @@
 package ru.example.hw10.tests;
 
 import com.github.javafaker.Faker;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import ru.example.hw10.pages.PageFormStudents;
 import ru.example.hw10.testData.Student;
@@ -11,6 +12,7 @@ public class StudentRegistrationFormTest extends BaseTest {
     final String PATH_TO_FILE = "src/test/resources/english.jpg";
 
     @Test
+    @Tag("selenoidFirst")
     public void inputValidData() {
         Faker faker = new Faker();
         Student student = Student.newBuilder()
