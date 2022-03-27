@@ -6,16 +6,17 @@ plugins {
 group 'ru.example'
 version '1.0'
 
+def allureVersion = "2.17.2"
+
 allure {
     report {
-        version.set("2.17.2")
+        version.set(allureVersion)
     }
     adapter {
-        autoconfigure.set(true)
         aspectjWeaver.set(true)
         frameworks {
             junit5 {
-                adapterVersion.set("2.17.2")
+                adapterVersion.set(allureVersion)
             }
         }
     }
@@ -30,7 +31,8 @@ dependencies {
             "com.codeborne:selenide:6.1.2",
             "org.junit.jupiter:junit-jupiter-api:5.8.2",
             "com.github.javafaker:javafaker:1.0.2",
-            'io.qameta.allure:allure-selenide:2.17.2',
+            "io.qameta.allure:allure-selenide:$allureVersion",
+            'org.aeonbits.owner:owner:1.0.12',
             'org.assertj:assertj-core:3.22.0',
             'com.codeborne:pdf-test:1.7.0',
             'com.codeborne:xls-test:1.4.0',
@@ -45,8 +47,13 @@ dependencies {
     )
 }
 
-test {
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Test) {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
 
     testLogging {
         lifecycle {
@@ -59,5 +66,11 @@ test {
 task selenoidFirst(type: Test) {
     useJUnitPlatform {
         includeTags "selenoidFirst"
+    }
+}
+
+task testOwner(type: Test) {
+    useJUnitPlatform {
+        includeTags "owner"
     }
 }
