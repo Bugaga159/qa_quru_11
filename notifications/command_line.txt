@@ -1,0 +1,58 @@
+########### github allure-notifications
+https://github.com/qa-guru/allure-notifications
+
+########### GET ALL MESSAGES
+@BotFather
+https://api.telegram.org/bot{token_bot}/getUpdates
+
+########### LOCAL TELEGRAM
+java  \
+-DprojectName=qa_quru_1 \
+-Denv=https://qa.guru \
+-DreportLink=https://no.link/ \
+-Dcomm='Hello! It is my allure report!' \
+-Dconfig.file=./notifications/telegram_config_local.json \
+-jar allure-notifications-3.1.2.jar
+
+########### LOCAL SLACK
+java  \
+-DprojectName='Local run' \
+-Denv=https://qa.guru \
+-DreportLink=https://no.link/" \
+-Dcomm='Any comment here' \
+-Dconfig.file=./notifications/slack_config_local.json \
+-jar ./notifications/allure-notifications-3.1.2.jar
+
+########### REMOTE TELEGRAM
+java  \
+-DprojectName=${PROJECT_NAME} \
+-Denv=${ENVIRONMENT} \
+-DreportLink=${BUILD_URL} \
+-Dcomm=${COMMENT} \
+-Dconfig.file=./notifications/telegram_config.json \
+-jar ./notifications/allure-notifications-3.1.2.jar
+
+########### REMOTE TELEGRAM WITHOUT .JAR
+java  \
+-DprojectName=${PROJECT_NAME} \
+-Denv=${ENVIRONMENT} \
+-DreportLink=${BUILD_URL}" \
+-Dcomm=${COMMENT} \
+-Dconfig.file=./notifications/telegram_config.json \
+-jar ../allure-notifications-3.1.2.jar
+
+########### REMOTE SLACK WITHOUT .JAR
+java  \
+-DprojectName=${PROJECT_NAME} \
+-Denv=${ENVIRONMENT} \
+-DreportLink=${BUILD_URL} \
+-Dcomm=${COMMENT} \
+-Dconfig.file=./notifications/slack_config.json \
+-jar ../allure-notifications-3.1.2.jar
+
+########### DOWNLOAD .JAR TO ROOT PROJECTS FOLDER
+cd ..
+FILE=./allure-notifications-3.1.2.jar
+if [ ! -f "$FILE" ]; then
+   wget https://github.com/qa-guru/allure-notifications/releases/download/3.1.2/allure-notifications-3.1.2.jar
+fi
