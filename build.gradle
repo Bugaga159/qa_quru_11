@@ -27,9 +27,12 @@ repositories {
 }
 
 dependencies {
+    testCompileOnly 'org.projectlombok:lombok:1.18.24'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
     testImplementation (
             "com.codeborne:selenide:6.1.2",
             "org.junit.jupiter:junit-jupiter-api:5.8.2",
+            'org.junit.jupiter:junit-jupiter-params:5.8.2',
             "com.github.javafaker:javafaker:1.0.2",
             "io.qameta.allure:allure-selenide:$allureVersion",
             'org.aeonbits.owner:owner:1.0.12',
@@ -40,10 +43,11 @@ dependencies {
             'com.google.code.gson:gson:2.9.0',
             'com.fasterxml.jackson.core:jackson-core:2.13.2',
             'com.fasterxml.jackson.core:jackson-databind:2.13.2',
+            'io.rest-assured:rest-assured:5.0.1'
     )
     testRuntimeOnly (
             "org.junit.jupiter:junit-jupiter-engine:5.8.2",
-            'org.slf4j:slf4j-simple:1.7.32'
+            'org.slf4j:slf4j-simple:1.7.32',
     )
 }
 
@@ -72,5 +76,11 @@ task selenoidFirst(type: Test) {
 task testOwner(type: Test) {
     useJUnitPlatform {
         includeTags "owner"
+    }
+}
+
+task testApi(type: Test) {
+    useJUnitPlatform {
+        includeTags "apiHw17"
     }
 }
