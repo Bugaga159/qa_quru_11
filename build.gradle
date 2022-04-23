@@ -84,3 +84,9 @@ task testApi(type: Test) {
         includeTags "apiHw17"
     }
 }
+
+task testHw15(type: Test) {
+    useJUnitPlatform {
+        includeTags "hw15"
+    }
+}
