@@ -74,3 +74,9 @@ task testOwner(type: Test) {
         includeTags "owner"
     }
 }
+
+task testHw15(type: Test) {
+    useJUnitPlatform {
+        includeTags "hw15"
+    }
+}
